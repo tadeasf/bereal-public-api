@@ -1,10 +1,21 @@
-FROM node:latest
+FROM oven/bun:latest
 
 WORKDIR /app
-COPY package.json package.json
-COPY tsconfig.json tsconfig.json
-RUN npm install
+
+# Copy package files
+COPY package.json bun.lockb ./
+
+# Install dependencies
+RUN bun install
+
+# Copy application source
 COPY . .
-RUN npm run build
-EXPOSE 3000
-CMD ["npm", "run", "start:prod"]
+
+# Build the application
+RUN bun run build
+
+# Expose port
+EXPOSE 3299
+
+# Start the application
+CMD ["bun", "start"]
