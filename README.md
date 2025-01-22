@@ -1,4 +1,4 @@
-# BeReal restAPI (not official)
+# Public BeReal API
 
 <img src='./assets/berealapilogo.png' width='100%' alt="BeReal API Logo">
 
