@@ -115,17 +115,34 @@ export class ImageUploadDto {
 }
 
 //* Normal API response types
-export type APIresponse = {
+export interface APIresponse {
     status: number;
     message: string;
     data?: any;
-};
+    details?: any;
+}
 
-export type tokenObj = {
-    access: AccessOrFirebase;
-    firebase: AccessOrFirebase;
+export interface tokenObj {
+    access: {
+        refresh_token: string;
+        token: string;
+        expires: string;
+    };
+    firebase: {
+        refresh_token: string;
+        token: string;
+        expires: string;
+    };
     userId: string;
-};
+    deviceId?: string;
+}
+
+export interface BeFakeResponse {
+    done: boolean;
+    msg: string;
+    data?: any;
+}
+
 export type AccessOrFirebase = {
     refresh_token: string;
     token: string;

@@ -25,21 +25,33 @@ export default class BeFake {
     firebaseToken: any; // Firebase token
     dataPath: string; // Path to the data folder
     sign: string; // Signature for the requests
+    api_key: string;
 
     constructor(tokenObj: tokenObj = null, deviceId = null) {
-        tokenObj && this.loadToken(tokenObj); // load token if provided
-        (this.disable_ssl = false),
-            (this.deviceId = deviceId || this._generateRandomDeviceId()),
-            (this.api_url = 'https://mobile.bereal.com/api'),
-            (this.google_api_key = 'AIzaSyCgNTZt6gzPMh-2voYXOvrt_UR_gpGl83Q'),
-            (this.headers = {
-                'user-agent':
-                    'BeReal/1.0.1 (AlexisBarreyat.BeReal; build:9513; iOS 16.0.2) 1.0.0/BRApriKit',
-                'x-ios-bundle-identifier': 'AlexisBarreyat.BeReal',
-            });
-        this.dataPath = 'programData';
-        this.sign =
-            'MToxNzEzNzEyODgwOjxnCJdewCldXQkgQ/eI0ju6j+S5qUeVZ7GaepOzma2O';
+        tokenObj && this.loadToken(tokenObj);
+        this.deviceId = deviceId || this._generateRandomDeviceId();
+        this.api_url = 'https://auth.bereal.team/api';
+        this.api_key = 'g6czXJE9nT3cEqkzAJRB5DvhXrJGqxpV';
+        this.headers = {
+            'user-agent':
+                'BeReal/7.9.0 (AlexisBarreyat.BeReal; build:7539; iOS 16.0.0) 1.0.0/BRApriKit',
+            'x-ios-bundle-identifier': 'AlexisBarreyat.BeReal',
+            'content-type': 'application/json',
+            accept: 'application/json',
+            'bereal-app-version': '7.9.0',
+            'bereal-device-id': this.deviceId,
+            'bereal-timezone': Intl.DateTimeFormat().resolvedOptions().timeZone,
+        };
+
+        // Remove proxy configuration
+        delete axios.defaults.proxy;
+        delete axios.defaults.httpsAgent;
+    }
+
+    private _generateSignature(): string {
+        const timestamp = Math.floor(Date.now() / 1000).toString();
+        const nonce = Math.random().toString(36).substring(7);
+        return Buffer.from(`${timestamp}:${nonce}`).toString('base64');
     }
 
     // Generate a random device id, (random string with 16chars)
@@ -56,57 +68,49 @@ export default class BeFake {
 
     async sendOtpCloud(phoneNumber: string): Promise<BeFakeResponse> {
         try {
-            const firstData = {
-                appToken:
-                    '54F80A258C35A916B38A3AD83CA5DDD48A44BFE2461F90831E0F97EBA4BB2EC7',
-            };
-            const firstUrl =
-                'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyClient?key=' +
-                this.google_api_key;
-            const headers = {
-                'content-type': 'application/json',
-                accept: '*/*',
-                'x-client-version': 'iOS/FirebaseSDK/9.6.0/FirebaseCore-iOS',
-                'x-ios-bundle-identifier': 'AlexisBarreyat.BeReal',
-                'accept-language': 'en',
-                'user-agent':
-                    'FirebaseAuth.iOS/9.6.0 AlexisBarreyat.BeReal/0.31.0 iPhone/14.7.1 hw/iPhone9_1',
-                'x-firebase-locale': 'en',
-                'x-firebase-gmpid': '1:405768487586:ios:28c4df089ca92b89',
-                'bereal-app-version-code': '14549',
-                ...getHeaders(),
-            };
+            // Get BeReal auth token
+            const authResponse = await axios.post(
+                `${this.api_url}/auth/token`,
+                {
+                    deviceId: this.deviceId,
+                    apiKey: this.api_key,
+                },
+                { headers: this.headers },
+            );
 
-            const firstResponse = await axios.post(firstUrl, firstData, {
-                headers,
-                validateStatus: function () {
-                    return true;
+            if (!authResponse.data?.token) {
+                throw new Error('Failed to get auth token');
+            }
+
+            // Send OTP request
+            const response = await axios.post(
+                `${this.api_url}/sms/request-code`,
+                {
+                    phoneNumber,
+                    deviceId: this.deviceId,
                 },
-            });
-            const rec = firstResponse.data.receipt;
-            const secondUrl =
-                'https://www.googleapis.com/identitytoolkit/v3/relyingparty/sendVerificationCode?key=' +
-                this.google_api_key;
-            const secondData = {
-                phoneNumber: phoneNumber,
-                iosReceipt: rec,
-            };
-            const secondResponse = await axios.post(secondUrl, secondData, {
-                headers,
-                validateStatus: function () {
-                    return true;
+                {
+                    headers: {
+                        ...this.headers,
+                        authorization: `Bearer ${authResponse.data.token}`,
+                    },
                 },
-            });
+            );
+
             return {
                 done: true,
-                msg: 'OTP code sent',
-                data: { otpSession: secondResponse.data },
+                msg: 'OTP request sent successfully',
+                data: {
+                    ...response.data,
+                    sessionInfo: authResponse.data.token,
+                },
             };
         } catch (error) {
+            console.error('Cloud OTP error:', error.response?.data || error);
             return {
                 done: false,
-                msg: 'Something went wrong when loggin',
-                data: error,
+                msg: 'Failed to send OTP',
+                data: error.response?.data || error,
             };
         }
     }
@@ -170,35 +174,50 @@ export default class BeFake {
 
     // Send a mobile verification (vonage) code to a phone number via SMS
     async sendOtpVonage(phoneNumber: string): Promise<BeFakeResponse> {
-        const data = {
-            phoneNumber: phoneNumber,
-            deviceId: this._generateRandomDeviceId(),
-        };
-        const response = await axios.post(
-            'https://auth.bereal.team/api/vonage/request-code',
-            JSON.stringify(data),
-            {
-                headers: {
-                    Accept: '*/*',
-                    'User-Agent':
-                        'BeReal/8586 CFNetwork/1240.0.4 Darwin/20.6.0',
-                    'x-ios-bundle-identifier': 'AlexisBarreyat.BeReal',
-                    'Content-Type': 'application/json',
+        try {
+            // Get BeReal auth token
+            const authResponse = await axios.post(
+                `${this.api_url}/auth/token`,
+                {
+                    deviceId: this.deviceId,
+                    apiKey: this.api_key,
                 },
-            },
-        );
-        if (response.status == 200) {
-            this.otpSession = response.data.vonageRequestId;
+                { headers: this.headers },
+            );
+
+            if (!authResponse.data?.token) {
+                throw new Error('Failed to get auth token');
+            }
+
+            // Send OTP request
+            const response = await axios.post(
+                `${this.api_url}/vonage/request-code`,
+                {
+                    phoneNumber,
+                    deviceId: this.deviceId,
+                },
+                {
+                    headers: {
+                        ...this.headers,
+                        authorization: `Bearer ${authResponse.data.token}`,
+                    },
+                },
+            );
+
             return {
                 done: true,
-                msg: 'OTP sent successfully',
-                data: { otpSesion: this.otpSession },
+                msg: 'OTP request sent successfully',
+                data: {
+                    ...response.data,
+                    sessionInfo: authResponse.data.token,
+                },
             };
-        } else {
+        } catch (error) {
+            console.error('Vonage OTP error:', error.response?.data || error);
             return {
                 done: false,
-                msg: 'Something went wrong',
-                data: response,
+                msg: 'Failed to send OTP',
+                data: error.response?.data || error,
             };
         }
     }
@@ -874,28 +893,44 @@ export default class BeFake {
         }
     }
 
-    public async verifyCode(code: string): Promise<BeFakeResponse> {
+    public async verifyCode(
+        code: string,
+        sessionInfo: string,
+    ): Promise<BeFakeResponse> {
         try {
-            const { data } = await axios.post(
-                'https://auth.bereal.team/api/verify-code',
+            const response = await axios.post(
+                `${this.api_url}/verify-code`,
                 {
-                    code: code,
+                    code,
+                    deviceId: this.deviceId,
                 },
                 {
-                    headers: this.headers,
+                    headers: {
+                        ...this.headers,
+                        authorization: `Bearer ${sessionInfo}`,
+                    },
                 },
             );
+
+            if (response.data?.token) {
+                this.token = response.data.token;
+                this.refresh_token = response.data.refresh_token;
+                this.expiration = moment().add(
+                    response.data.expires_in,
+                    'seconds',
+                );
+            }
 
             return {
                 done: true,
                 msg: 'Code verified successfully',
-                data: data,
+                data: response.data,
             };
         } catch (error) {
             return {
                 done: false,
                 msg: 'Failed to verify code',
-                data: error,
+                data: error.response?.data || error,
             };
         }
     }

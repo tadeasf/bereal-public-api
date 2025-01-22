@@ -252,8 +252,13 @@ export class LoginController {
         },
     })
     @Post('/send-code/vonage')
-    SendCodeVonage(@Body() body: { phone: string }): Promise<APIresponse> {
-        return this.loginService.sendVonageCode(body);
+    SendCodeVonage(
+        @Body() body: { phone: string; deviceId?: string },
+    ): Promise<APIresponse> {
+        return this.loginService.sendVonageCode({
+            phone: body.phone,
+            deviceId: body.deviceId, // Pass through deviceId if provided
+        });
     }
 
     @ApiBody({
