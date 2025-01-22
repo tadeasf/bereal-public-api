@@ -7,7 +7,7 @@ import { APIresponse, tokenObj } from 'src/types/types';
 
 @Injectable()
 export class LoginService {
-    constructor(private jwtService: JwtService) { } // Constructor with jwtService
+    constructor(private jwtService: JwtService) {} // Constructor with jwtService
 
     // Get tokens object and return token
     public async tokenize(tokenObj: tokenObj): Promise<string> {

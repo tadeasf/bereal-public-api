@@ -11,7 +11,6 @@ import {
     ApiBody,
     ApiHeader,
     ApiOperation,
-    ApiParam,
     ApiResponse,
     ApiTags,
 } from '@nestjs/swagger';
@@ -19,7 +18,7 @@ import {
 @ApiTags('Login')
 @Controller('login')
 export class LoginController {
-    constructor(private readonly loginService: LoginService) { }
+    constructor(private readonly loginService: LoginService) {}
 
     @ApiBody({
         description: 'Credentials to authenticate a user',
