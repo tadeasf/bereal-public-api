@@ -1,336 +1,550 @@
 // credit to retoheusser on Github
 const data = [
     {
-        validFrom: "2024-07-29T00:00:00.000Z",
-        signature: "MToxNzIyMjExMjAwOmcEGTxSznJkr3qfH9gKl1bpUEWOEphLR540fOie/6hR",
-    }, {
-        validFrom: "2024-08-05T00:00:00.000Z",
-        signature: "MToxNzIyODE2MDAwOkiJ3ybpuY7XTYukmwEnMi6rZjC0/oKqO8GxeqgMP9pY",
-    }, {
-        validFrom: "2024-08-12T00:00:00.000Z",
-        signature: "MToxNzIzNDIwODAwOiOv6pXUcJKduzI5N8O9plKUX0WTGiuWf1lKzfLCXvfg",
-    }, {
-        validFrom: "2024-08-19T00:00:00.000Z",
-        signature: "MToxNzI0MDI1NjAwOjQ8MjeW14T4Xtg0MWA/ccb7BJ45lzw7TeBVxvA/9LDz",
-    }, {
-        validFrom: "2024-08-26T00:00:00.000Z",
-        signature: "MToxNzI0NjMwNDAwOrol1hhryo4+2xl9SWL/xV/paEgDbHooB932zPZbxOD+",
-    }, {
-        validFrom: "2024-09-02T00:00:00.000Z",
-        signature: "MToxNzI1MjM1MjAwOtPClR1nkb/RDFUyaiY7vjMqmSeAB8EJtuyUus3RTtuu",
-    }, {
-        validFrom: "2024-09-09T00:00:00.000Z",
-        signature: "MToxNzI1ODQwMDAwOiAbh+M/5jNPxD8QYWj6wbEwq3KYQ0imnIxOxt0F5Wrf",
-    }, {
-        validFrom: "2024-09-16T00:00:00.000Z",
-        signature: "MToxNzI2NDQ0ODAwOltz8Gm/yL/OIyf2LfKqhVhzP2zjFS3qYgnaU7WMbhXC",
-    }, {
-        validFrom: "2024-09-23T00:00:00.000Z",
-        signature: "MToxNzI3MDQ5NjAwOuoQI48YzUTLyBCLtGxnmuxPzNSXzcaQLytZdAwJ04Eo",
-    }, {
-        validFrom: "2024-09-30T00:00:00.000Z",
-        signature: "MToxNzI3NjU0NDAwOpCxwOiskdNYnl5mBo/iKVvsXm85zT+6fcIquyd5Al1l",
-    }, {
-        validFrom: "2024-10-07T00:00:00.000Z",
-        signature: "MToxNzI4MjU5MjAwOm4o9zNhFkVfI9wVZOu+oBXqa/yMVZc7KPzsO4MokgcJ",
-    }, {
-        validFrom: "2024-10-14T00:00:00.000Z",
-        signature: "MToxNzI4ODY0MDAwOrMCWg6Hpopi9iwiee7ET6x0M2ynV8K2L9zWkTTr3BOW",
-    }, {
-        validFrom: "2024-10-21T00:00:00.000Z",
-        signature: "MToxNzI5NDY4ODAwOqpf9EXTvb5FzWET0eQsG1xOtOSLQOFn3RtjZXbKWlJe",
-    }, {
-        validFrom: "2024-10-28T00:00:00.000Z",
-        signature: "MToxNzMwMDczNjAwOkV2Bk13X/5u8syJNxdmnjCw3cHQjjaHhkOE7pOLNPTq",
-    }, {
-        validFrom: "2024-11-04T00:00:00.000Z",
-        signature: "MToxNzMwNjc4NDAwOvp1iSmhamPk+/PDCKV6NBBE61u1e6fRjkQNPxLjOd7Z",
-    }, {
-        validFrom: "2024-11-11T00:00:00.000Z",
-        signature: "MToxNzMxMjgzMjAwOspun2mqBg8/i/P6aAqObF/Gbac03kpih88dUAlcnxk4",
-    }, {
-        validFrom: "2024-11-18T00:00:00.000Z",
-        signature: "MToxNzMxODg4MDAwOmSA24/XT0WOMMDycAqN+d737xwvOyKLdD1jzo48RbxA",
-    }, {
-        validFrom: "2024-11-25T00:00:00.000Z",
-        signature: "MToxNzMyNDkyODAwOlsHop3pnPC8Z566rFCs2XJY0W9FjAjT78+etnxpeWiH",
-    }, {
-        validFrom: "2024-12-02T00:00:00.000Z",
-        signature: "MToxNzMzMDk3NjAwOhxW66znJNjWzlx4HT5L7wTYc82E9SbHq0AsIFjFxlzd",
-    }, {
-        validFrom: "2024-12-09T00:00:00.000Z",
-        signature: "MToxNzMzNzAyNDAwOvz3IqLXBs2fCveX39LESrb0mCxmrB2VcHFDsbrVT3w7",
-    }, {
-        validFrom: "2024-12-16T00:00:00.000Z",
-        signature: "MToxNzM0MzA3MjAwOijUp3Q4ZMwNEz12cBEdFx4dcgSK/H/6DQi8XlIwqktS",
-    }, {
-        validFrom: "2024-12-23T00:00:00.000Z",
-        signature: "MToxNzM0OTEyMDAwOpItnKJUEtkMImTWgc3hjD3pPaGgPzGARCaSqmCT0ZFj",
-    }, {
-        validFrom: "2024-12-30T00:00:00.000Z",
-        signature: "MToxNzM1NTE2ODAwOmvhRI3gkVY3PAmI8P7xZ+Kx4pkrHacWGG6CZOkUxEbe",
-    }, {
-        validFrom: "2025-01-06T00:00:00.000Z",
-        signature: "MToxNzM2MTIxNjAwOjM//nIe7QWwUdnTIVTRi1tF1+0XoykEg+8MqoNS7pJ0",
-    }, {
-        validFrom: "2025-01-13T00:00:00.000Z",
-        signature: "MToxNzM2NzI2NDAwOpUjgOy5p9LHH8MNbHYY5vpLJXpZKrAYgaT6jZh5oZsc",
-    }, {
-        validFrom: "2025-01-20T00:00:00.000Z",
-        signature: "MToxNzM3MzMxMjAwOqsaHq2OUN4/8W+37hyOeBWs0FlcArkEnodD/LA9rCaz",
-    }, {
-        validFrom: "2025-01-27T00:00:00.000Z",
-        signature: "MToxNzM3OTM2MDAwOjyF9FSGdgmtNMmuN1/o63AzZitv+8PD45fO9POQ3Oo6",
-    }, {
-        validFrom: "2025-02-03T00:00:00.000Z",
-        signature: "MToxNzM4NTQwODAwOo9f+aONTHC3M4/rEbHGmx8+WVbYYxQ4yys5HYPY6In1",
-    }, {
-        validFrom: "2025-02-10T00:00:00.000Z",
-        signature: "MToxNzM5MTQ1NjAwOulS5Xlm+2u8ap77d483Dpr6xcL4HRPfeq6NHiQ8DOWT",
-    }, {
-        validFrom: "2025-02-17T00:00:00.000Z",
-        signature: "MToxNzM5NzUwNDAwOt641witfU8GxJyjw+RB6AEKTbZOslq6bqwTpjiVzPqV",
-    }, {
-        validFrom: "2025-02-24T00:00:00.000Z",
-        signature: "MToxNzQwMzU1MjAwOiQdJ34wGf3/NW0sCLNOBBftdI+0EhK5J4AsqyIeVMkZ",
-    }, {
-        validFrom: "2025-03-03T00:00:00.000Z",
-        signature: "MToxNzQwOTYwMDAwOhNpLiyPat2BOjCza3b6Q7volzhCP+LQBDIb9nYq9XRY",
-    }, {
-        validFrom: "2025-03-10T00:00:00.000Z",
-        signature: "MToxNzQxNTY0ODAwOkfLPRhXPt0NHdDfyNan22nUKCMDsqA+3UG4f8uo5hFZ",
-    }, {
-        validFrom: "2025-03-17T00:00:00.000Z",
-        signature: "MToxNzQyMTY5NjAwOnT7Tp79sKCGhZ8J5IPtw6ZM4aPYPteO85zyriU6NDxk",
-    }, {
-        validFrom: "2025-03-24T00:00:00.000Z",
-        signature: "MToxNzQyNzc0NDAwOujY7GRSKhOcOvkBjl0gnmw16DeLLd926llZrQI3LgFU",
-    }, {
-        validFrom: "2025-03-31T00:00:00.000Z",
-        signature: "MToxNzQzMzc5MjAwOuUE+yVo9nWpjPkI6NaxKTofNylqCFAbZcsQp4qwXVlY",
-    }, {
-        validFrom: "2025-04-07T00:00:00.000Z",
-        signature: "MToxNzQzOTg0MDAwOsyp1nO5ln2cr81Wa/7J182x0iXCbcuHkti+uMHfZZvQ",
-    }, {
-        validFrom: "2025-04-14T00:00:00.000Z",
-        signature: "MToxNzQ0NTg4ODAwOozOB9ICjA1ElWSMG72x+ALP0VNfmNGOU9YofeIwjSoh",
-    }, {
-        validFrom: "2025-04-21T00:00:00.000Z",
-        signature: "MToxNzQ1MTkzNjAwOgUzl48V5Rh8L10OxFY3rPAYn3ado3ZHKwnzq5j7j6Vn",
-    }, {
-        validFrom: "2025-04-28T00:00:00.000Z",
-        signature: "MToxNzQ1Nzk4NDAwOgiXI+ca+ztyR/e5fKP+pa+WfWaf1sGk2DPQNzjG70Lw",
-    }, {
-        validFrom: "2025-05-05T00:00:00.000Z",
-        signature: "MToxNzQ2NDAzMjAwOsfe4wR2zkBkdrFwJMgTyPQ9RQMgfBglMplrjYvCn2Dq",
-    }, {
-        validFrom: "2025-05-12T00:00:00.000Z",
-        signature: "MToxNzQ3MDA4MDAwOhlrl5qxZghLKTSVehw0G+98rgVn6mXSsb9mP/bErUTA",
-    }, {
-        validFrom: "2025-05-19T00:00:00.000Z",
-        signature: "MToxNzQ3NjEyODAwOplmaPeioRi956FAq2tGcQXnKX1K5LaUpuNTBrIWyMnX",
-    }, {
-        validFrom: "2025-05-26T00:00:00.000Z",
-        signature: "MToxNzQ4MjE3NjAwOmOXIqxJsdsRvWce0ovEVjGzQ3LuB8fPzH/ujS1WWkU2",
-    }, {
-        validFrom: "2025-06-02T00:00:00.000Z",
-        signature: "MToxNzQ4ODIyNDAwOmqhDtMJ8Kx4ZSjMJIWv6jgarOGOpW8PRB/O8lwmOjB7",
-    }, {
-        validFrom: "2025-06-09T00:00:00.000Z",
-        signature: "MToxNzQ5NDI3MjAwOnWoHuVPIbNH8XrBE6qw/9U7erKRO7pWZosF55tuEe4/",
-    }, {
-        validFrom: "2025-06-16T00:00:00.000Z",
-        signature: "MToxNzUwMDMyMDAwOgoM+zl0tXlGcI3Ya7EZsX7PbHjZ2sr64jz8Q21Ls40R",
-    }, {
-        validFrom: "2025-06-23T00:00:00.000Z",
-        signature: "MToxNzUwNjM2ODAwOnOPWPVLhSaoescBFYCGf5/b372tggskaJ+qK2eYe8e3",
-    }, {
-        validFrom: "2025-06-30T00:00:00.000Z",
-        signature: "MToxNzUxMjQxNjAwOkzljpcr1D0AeKdF7/EqdQQZ6qFauMdveQMEfWMg4E93",
-    }, {
-        validFrom: "2025-07-07T00:00:00.000Z",
-        signature: "MToxNzUxODQ2NDAwOqE0GdyJwt7UD1tl8jJeHy5E5t42189uhllEodlNUngq",
-    }, {
-        validFrom: "2025-07-14T00:00:00.000Z",
-        signature: "MToxNzUyNDUxMjAwOklZ+lyZkQMWRxrie3ibCxGDAJbnud9hLch26pe5GQv0",
-    }, {
-        validFrom: "2025-07-21T00:00:00.000Z",
-        signature: "MToxNzUzMDU2MDAwOkWKceQjw4yG88sF/5Cxywa70ZZ3ojnSspv/TfJcuPNW",
-    }, {
-        validFrom: "2025-07-28T00:00:00.000Z",
-        signature: "MToxNzUzNjYwODAwOgss/yXR22Jzk1LlV2vje8oCngX1erirflnUoNoZM4YG",
-    }, {
-        validFrom: "2025-08-04T00:00:00.000Z",
-        signature: "MToxNzU0MjY1NjAwOhTURXfWm2G7sQ4WovG3yC5rFc6kt2hMpMBtLuHUQjXs",
-    }, {
-        validFrom: "2025-08-11T00:00:00.000Z",
-        signature: "MToxNzU0ODcwNDAwOh+ljCucYWHEbDVTMLpJO8eOg4xrb3NvrPsD9F8oDLvJ",
-    }, {
-        validFrom: "2025-08-18T00:00:00.000Z",
-        signature: "MToxNzU1NDc1MjAwOqOHlcO9cUVm/ErL+U/6PfgBm9XHtNnlh8lUwB3UX6oT",
-    }, {
-        validFrom: "2025-08-25T00:00:00.000Z",
-        signature: "MToxNzU2MDgwMDAwOgHn23eq8yhyidj5xcsM4HV3LShqj5e+BRWmchi2BDiJ",
-    }, {
-        validFrom: "2025-09-01T00:00:00.000Z",
-        signature: "MToxNzU2Njg0ODAwOsBkU9Q73HBQ1DmpKUbLk6wSaK7wrMxV1cEKqMktpi77",
-    }, {
-        validFrom: "2025-09-08T00:00:00.000Z",
-        signature: "MToxNzU3Mjg5NjAwOpNbh96mbzonsgqcU76UWF35Ipojvw6NclHNAW3ifBCw",
-    }, {
-        validFrom: "2025-09-15T00:00:00.000Z",
-        signature: "MToxNzU3ODk0NDAwOnBdqdQKmZXP3KN0MnoJabKxFIIGNRNAla2muJRs+w0X",
-    }, {
-        validFrom: "2025-09-22T00:00:00.000Z",
-        signature: "MToxNzU4NDk5MjAwOlqWxWwaBv4RyZImDDqqNcuCxUddlSh9plDLH39er+l7",
-    }, {
-        validFrom: "2025-09-29T00:00:00.000Z",
-        signature: "MToxNzU5MTA0MDAwOjEnn1o/gTxZM2/Gigdg7uqKG2bWqA9P7OokMdB9ffq8",
-    }, {
-        validFrom: "2025-10-06T00:00:00.000Z",
-        signature: "MToxNzU5NzA4ODAwOqSCeTJJYqqDkpEVHeCxlDO9CRbFB3i7LA3Rw/BMqP4A",
-    }, {
-        validFrom: "2025-10-13T00:00:00.000Z",
-        signature: "MToxNzYwMzEzNjAwOiQxgwlDy1Yp49HlinlSBVM90fI5uoAtAqimunSSpU5R",
-    }, {
-        validFrom: "2025-10-20T00:00:00.000Z",
-        signature: "MToxNzYwOTE4NDAwOmtW9+HoTZKhS+V4cHIto78AzxNSu6WDQMCajfAXW0xJ",
-    }, {
-        validFrom: "2025-10-27T00:00:00.000Z",
-        signature: "MToxNzYxNTIzMjAwOtwEeh3ov08rl6J+ZdH/7XRdHqRvJ+aZxop5PjWWV4YY",
-    }, {
-        validFrom: "2025-11-03T00:00:00.000Z",
-        signature: "MToxNzYyMTI4MDAwOtBu+5g4lL1zEpmaNkgqFl2VEOnaF9ZzzAYIM79Q1bIk",
-    }, {
-        validFrom: "2025-11-10T00:00:00.000Z",
-        signature: "MToxNzYyNzMyODAwOih7amyEfH5Xm/X6zo/a+L3JpqjC10JYWYYV9H6z37DO",
-    }, {
-        validFrom: "2025-11-17T00:00:00.000Z",
-        signature: "MToxNzYzMzM3NjAwOi9KWyqIxT2GVV2Mup4t/RkKiUSsk+u43uMCpyfCs8Hq",
-    }, {
-        validFrom: "2025-11-24T00:00:00.000Z",
-        signature: "MToxNzYzOTQyNDAwOv5O/VoUmEdY/fCj4b4I1K3li+U9yjmJEk6mTuPuTWiV",
-    }, {
-        validFrom: "2025-12-01T00:00:00.000Z",
-        signature: "MToxNzY0NTQ3MjAwOsvJ7klr4NXvITa94QErDLiPbQvGD3iW5BLPpKfOQUSx",
-    }, {
-        validFrom: "2025-12-08T00:00:00.000Z",
-        signature: "MToxNzY1MTUyMDAwOgZFRJyf/xXO5W6xQNQaiGWkTG2qmYbwxD7Wco+8VJ9o",
-    }, {
-        validFrom: "2025-12-15T00:00:00.000Z",
-        signature: "MToxNzY1NzU2ODAwOpk25CXSscE/FoiTZVfE73bhgiWiYMrp/ulu2z+vkj7E",
-    }, {
-        validFrom: "2025-12-22T00:00:00.000Z",
-        signature: "MToxNzY2MzYxNjAwOkPtwZYz/s6jlUIdNKRekTePSuXCIaBg42BcSvCVln3s",
-    }, {
-        validFrom: "2025-12-29T00:00:00.000Z",
-        signature: "MToxNzY2OTY2NDAwOgTLygFlC7WfnK8hMxLfHj188vf8tCRLssxgO8J4thE0",
-    }, {
-        validFrom: "2026-01-05T00:00:00.000Z",
-        signature: "MToxNzY3NTcxMjAwOhxqD2iWU62IIwTHCcJX6fhceWzg2CudiiCCtI20aE7r",
-    }, {
-        validFrom: "2026-01-12T00:00:00.000Z",
-        signature: "MToxNzY4MTc2MDAwOqtXNjbJKAOwC8FRA3eIOvJH6lMrsErPnewRghdTmjbo",
-    }, {
-        validFrom: "2026-01-19T00:00:00.000Z",
-        signature: "MToxNzY4NzgwODAwOi/+yU2syb2UhkQL7mQVJ5QCajbryDn7ucry7enS4N7d",
-    }, {
-        validFrom: "2026-01-26T00:00:00.000Z",
-        signature: "MToxNzY5Mzg1NjAwOpCN8gy2DlmvWGarcfZrre/gO37r7FCPK0H4k9iZvDUv",
-    }, {
-        validFrom: "2026-02-02T00:00:00.000Z",
-        signature: "MToxNzY5OTkwNDAwOgydKQRHNcWCYyVxntHMpF381pyQissqas7SYlfTEJcr",
-    }, {
-        validFrom: "2026-02-09T00:00:00.000Z",
-        signature: "MToxNzcwNTk1MjAwOvbw7PAOdUhYdPNqqu2EAXoPllQRCG0ih1XZ4XbvHU6U",
-    }, {
-        validFrom: "2026-02-16T00:00:00.000Z",
-        signature: "MToxNzcxMjAwMDAwOqbMcnIQuRlO+dg/MpkBY1Bfg4zUQvDsJbPNPdo1z0S3",
-    }, {
-        validFrom: "2026-02-23T00:00:00.000Z",
-        signature: "MToxNzcxODA0ODAwOlRoWudg2glPrPW4x0wZ56Cg/voLoW+JPUpfVHH5zaGR",
-    }, {
-        validFrom: "2026-03-02T00:00:00.000Z",
-        signature: "MToxNzcyNDA5NjAwOmAVRj6ZLALdIxifNpiRz/KYEwMk7QasS+cuj9a2bQ6y",
-    }, {
-        validFrom: "2026-03-09T00:00:00.000Z",
-        signature: "MToxNzczMDE0NDAwOgqzcqkCJ2pOd2i457AJy+l23Af2wR4E7ykCUPUgAfNg",
-    }, {
-        validFrom: "2026-03-16T00:00:00.000Z",
-        signature: "MToxNzczNjE5MjAwOkQBUHj5Z83/G2jUVgcIPhw2f7GbwsjVhb+UCeFnVNGm",
-    }, {
-        validFrom: "2026-03-23T00:00:00.000Z",
-        signature: "MToxNzc0MjI0MDAwOkda8DoNz+/w/tCQ/Vr2rb4iuLe+4HxsuJlL5LeP+fAe",
-    }, {
-        validFrom: "2026-03-30T00:00:00.000Z",
-        signature: "MToxNzc0ODI4ODAwOkoWLIuJMJ8vw2yMHKY7iNgcK/+kWJbCypYVARahI5CP",
-    }, {
-        validFrom: "2026-04-06T00:00:00.000Z",
-        signature: "MToxNzc1NDMzNjAwOk7lRsEu/EFZ3/monwomFw8TvXdBOkfV1rERzJMFHwMU",
-    }, {
-        validFrom: "2026-04-13T00:00:00.000Z",
-        signature: "MToxNzc2MDM4NDAwOhhuuXaavI2nb7keZqCcLt7W5sYWKOFG6NDg6RSqOBkE",
-    }, {
-        validFrom: "2026-04-20T00:00:00.000Z",
-        signature: "MToxNzc2NjQzMjAwOoGE2Z/oyjNpuDQslKNMyFRTV8PJz4VRP28HT46+uygv",
-    }, {
-        validFrom: "2026-04-27T00:00:00.000Z",
-        signature: "MToxNzc3MjQ4MDAwOm91z9X943kyJ/G8kl6kdJ8jDmoc6ALR38q4ASdet/SX",
-    }, {
-        validFrom: "2026-05-04T00:00:00.000Z",
-        signature: "MToxNzc3ODUyODAwOkJQE+2lS/Egixmo4UbiNahQ6wJ2fbklgh89xAGqv6GO",
-    }, {
-        validFrom: "2026-05-11T00:00:00.000Z",
-        signature: "MToxNzc4NDU3NjAwOqa5j0MERCVnbLgDbT53Gq+/ynGvCf5icPu3Dv/djLTj",
-    }, {
-        validFrom: "2026-05-18T00:00:00.000Z",
-        signature: "MToxNzc5MDYyNDAwOkFnkkqu0PJ17Aw5ol4QXdxyQcMpOLwZpgshwINfJyaH",
-    }, {
-        validFrom: "2026-05-25T00:00:00.000Z",
-        signature: "MToxNzc5NjY3MjAwOgq3tyIViGmnnVNx4kcTxC/Rr6PGvRGhdLX2YTZTi3ns",
-    }, {
-        validFrom: "2026-06-01T00:00:00.000Z",
-        signature: "MToxNzgwMjcyMDAwOpJcg+0Zfj5hxttpy7/FWAyyIg5PAlS9z8/eXv/YdyMn",
-    }, {
-        validFrom: "2026-06-08T00:00:00.000Z",
-        signature: "MToxNzgwODc2ODAwOsxcyTIpMSzK00BV8kaHXb4oOENaww3lwrwwWJ411GyH",
-    }, {
-        validFrom: "2026-06-15T00:00:00.000Z",
-        signature: "MToxNzgxNDgxNjAwOi9+5D0Yx2RC25+vuL3KZhTlNKriL0g6uhz1b3p4R5uE",
-    }, {
-        validFrom: "2026-06-22T00:00:00.000Z",
-        signature: "MToxNzgyMDg2NDAwOosxPpO0ZuWKrDZVIHxZediOY3WqTrWJSUNtE/eAYmK9",
-    }, {
-        validFrom: "2026-06-29T00:00:00.000Z",
-        signature: "MToxNzgyNjkxMjAwOvzNd75LaoAyrhzZbcNFJ4iNpv/q8Ymtn39t9/VHEhzS",
-    }, {
-        validFrom: "2026-07-06T00:00:00.000Z",
-        signature: "MToxNzgzMjk2MDAwOo8fY7EGo6QYRcT4yQm/J91Bl6OH6BUEI22rUBH/gerh",
-    }, {
-        validFrom: "2026-07-13T00:00:00.000Z",
-        signature: "MToxNzgzOTAwODAwOiae198Y1hGgOTwCivxS+0wA1lWyRR6ygUmPHUl4EQ1q",
-    }, {
-        validFrom: "2026-07-20T00:00:00.000Z",
-        signature: "MToxNzg0NTA1NjAwOtO+JNX4Q7rq2MDg13mOBy02usMvL5dE9glRHppEi5Bm",
-    }
+        validFrom: '2024-07-29T00:00:00.000Z',
+        signature:
+            'MToxNzIyMjExMjAwOmcEGTxSznJkr3qfH9gKl1bpUEWOEphLR540fOie/6hR',
+    },
+    {
+        validFrom: '2024-08-05T00:00:00.000Z',
+        signature:
+            'MToxNzIyODE2MDAwOkiJ3ybpuY7XTYukmwEnMi6rZjC0/oKqO8GxeqgMP9pY',
+    },
+    {
+        validFrom: '2024-08-12T00:00:00.000Z',
+        signature:
+            'MToxNzIzNDIwODAwOiOv6pXUcJKduzI5N8O9plKUX0WTGiuWf1lKzfLCXvfg',
+    },
+    {
+        validFrom: '2024-08-19T00:00:00.000Z',
+        signature:
+            'MToxNzI0MDI1NjAwOjQ8MjeW14T4Xtg0MWA/ccb7BJ45lzw7TeBVxvA/9LDz',
+    },
+    {
+        validFrom: '2024-08-26T00:00:00.000Z',
+        signature:
+            'MToxNzI0NjMwNDAwOrol1hhryo4+2xl9SWL/xV/paEgDbHooB932zPZbxOD+',
+    },
+    {
+        validFrom: '2024-09-02T00:00:00.000Z',
+        signature:
+            'MToxNzI1MjM1MjAwOtPClR1nkb/RDFUyaiY7vjMqmSeAB8EJtuyUus3RTtuu',
+    },
+    {
+        validFrom: '2024-09-09T00:00:00.000Z',
+        signature:
+            'MToxNzI1ODQwMDAwOiAbh+M/5jNPxD8QYWj6wbEwq3KYQ0imnIxOxt0F5Wrf',
+    },
+    {
+        validFrom: '2024-09-16T00:00:00.000Z',
+        signature:
+            'MToxNzI2NDQ0ODAwOltz8Gm/yL/OIyf2LfKqhVhzP2zjFS3qYgnaU7WMbhXC',
+    },
+    {
+        validFrom: '2024-09-23T00:00:00.000Z',
+        signature:
+            'MToxNzI3MDQ5NjAwOuoQI48YzUTLyBCLtGxnmuxPzNSXzcaQLytZdAwJ04Eo',
+    },
+    {
+        validFrom: '2024-09-30T00:00:00.000Z',
+        signature:
+            'MToxNzI3NjU0NDAwOpCxwOiskdNYnl5mBo/iKVvsXm85zT+6fcIquyd5Al1l',
+    },
+    {
+        validFrom: '2024-10-07T00:00:00.000Z',
+        signature:
+            'MToxNzI4MjU5MjAwOm4o9zNhFkVfI9wVZOu+oBXqa/yMVZc7KPzsO4MokgcJ',
+    },
+    {
+        validFrom: '2024-10-14T00:00:00.000Z',
+        signature:
+            'MToxNzI4ODY0MDAwOrMCWg6Hpopi9iwiee7ET6x0M2ynV8K2L9zWkTTr3BOW',
+    },
+    {
+        validFrom: '2024-10-21T00:00:00.000Z',
+        signature:
+            'MToxNzI5NDY4ODAwOqpf9EXTvb5FzWET0eQsG1xOtOSLQOFn3RtjZXbKWlJe',
+    },
+    {
+        validFrom: '2024-10-28T00:00:00.000Z',
+        signature:
+            'MToxNzMwMDczNjAwOkV2Bk13X/5u8syJNxdmnjCw3cHQjjaHhkOE7pOLNPTq',
+    },
+    {
+        validFrom: '2024-11-04T00:00:00.000Z',
+        signature:
+            'MToxNzMwNjc4NDAwOvp1iSmhamPk+/PDCKV6NBBE61u1e6fRjkQNPxLjOd7Z',
+    },
+    {
+        validFrom: '2024-11-11T00:00:00.000Z',
+        signature:
+            'MToxNzMxMjgzMjAwOspun2mqBg8/i/P6aAqObF/Gbac03kpih88dUAlcnxk4',
+    },
+    {
+        validFrom: '2024-11-18T00:00:00.000Z',
+        signature:
+            'MToxNzMxODg4MDAwOmSA24/XT0WOMMDycAqN+d737xwvOyKLdD1jzo48RbxA',
+    },
+    {
+        validFrom: '2024-11-25T00:00:00.000Z',
+        signature:
+            'MToxNzMyNDkyODAwOlsHop3pnPC8Z566rFCs2XJY0W9FjAjT78+etnxpeWiH',
+    },
+    {
+        validFrom: '2024-12-02T00:00:00.000Z',
+        signature:
+            'MToxNzMzMDk3NjAwOhxW66znJNjWzlx4HT5L7wTYc82E9SbHq0AsIFjFxlzd',
+    },
+    {
+        validFrom: '2024-12-09T00:00:00.000Z',
+        signature:
+            'MToxNzMzNzAyNDAwOvz3IqLXBs2fCveX39LESrb0mCxmrB2VcHFDsbrVT3w7',
+    },
+    {
+        validFrom: '2024-12-16T00:00:00.000Z',
+        signature:
+            'MToxNzM0MzA3MjAwOijUp3Q4ZMwNEz12cBEdFx4dcgSK/H/6DQi8XlIwqktS',
+    },
+    {
+        validFrom: '2024-12-23T00:00:00.000Z',
+        signature:
+            'MToxNzM0OTEyMDAwOpItnKJUEtkMImTWgc3hjD3pPaGgPzGARCaSqmCT0ZFj',
+    },
+    {
+        validFrom: '2024-12-30T00:00:00.000Z',
+        signature:
+            'MToxNzM1NTE2ODAwOmvhRI3gkVY3PAmI8P7xZ+Kx4pkrHacWGG6CZOkUxEbe',
+    },
+    {
+        validFrom: '2025-01-06T00:00:00.000Z',
+        signature:
+            'MToxNzM2MTIxNjAwOjM//nIe7QWwUdnTIVTRi1tF1+0XoykEg+8MqoNS7pJ0',
+    },
+    {
+        validFrom: '2025-01-13T00:00:00.000Z',
+        signature:
+            'MToxNzM2NzI2NDAwOpUjgOy5p9LHH8MNbHYY5vpLJXpZKrAYgaT6jZh5oZsc',
+    },
+    {
+        validFrom: '2025-01-20T00:00:00.000Z',
+        signature:
+            'MToxNzM3MzMxMjAwOqsaHq2OUN4/8W+37hyOeBWs0FlcArkEnodD/LA9rCaz',
+    },
+    {
+        validFrom: '2025-01-27T00:00:00.000Z',
+        signature:
+            'MToxNzM3OTM2MDAwOjyF9FSGdgmtNMmuN1/o63AzZitv+8PD45fO9POQ3Oo6',
+    },
+    {
+        validFrom: '2025-02-03T00:00:00.000Z',
+        signature:
+            'MToxNzM4NTQwODAwOo9f+aONTHC3M4/rEbHGmx8+WVbYYxQ4yys5HYPY6In1',
+    },
+    {
+        validFrom: '2025-02-10T00:00:00.000Z',
+        signature:
+            'MToxNzM5MTQ1NjAwOulS5Xlm+2u8ap77d483Dpr6xcL4HRPfeq6NHiQ8DOWT',
+    },
+    {
+        validFrom: '2025-02-17T00:00:00.000Z',
+        signature:
+            'MToxNzM5NzUwNDAwOt641witfU8GxJyjw+RB6AEKTbZOslq6bqwTpjiVzPqV',
+    },
+    {
+        validFrom: '2025-02-24T00:00:00.000Z',
+        signature:
+            'MToxNzQwMzU1MjAwOiQdJ34wGf3/NW0sCLNOBBftdI+0EhK5J4AsqyIeVMkZ',
+    },
+    {
+        validFrom: '2025-03-03T00:00:00.000Z',
+        signature:
+            'MToxNzQwOTYwMDAwOhNpLiyPat2BOjCza3b6Q7volzhCP+LQBDIb9nYq9XRY',
+    },
+    {
+        validFrom: '2025-03-10T00:00:00.000Z',
+        signature:
+            'MToxNzQxNTY0ODAwOkfLPRhXPt0NHdDfyNan22nUKCMDsqA+3UG4f8uo5hFZ',
+    },
+    {
+        validFrom: '2025-03-17T00:00:00.000Z',
+        signature:
+            'MToxNzQyMTY5NjAwOnT7Tp79sKCGhZ8J5IPtw6ZM4aPYPteO85zyriU6NDxk',
+    },
+    {
+        validFrom: '2025-03-24T00:00:00.000Z',
+        signature:
+            'MToxNzQyNzc0NDAwOujY7GRSKhOcOvkBjl0gnmw16DeLLd926llZrQI3LgFU',
+    },
+    {
+        validFrom: '2025-03-31T00:00:00.000Z',
+        signature:
+            'MToxNzQzMzc5MjAwOuUE+yVo9nWpjPkI6NaxKTofNylqCFAbZcsQp4qwXVlY',
+    },
+    {
+        validFrom: '2025-04-07T00:00:00.000Z',
+        signature:
+            'MToxNzQzOTg0MDAwOsyp1nO5ln2cr81Wa/7J182x0iXCbcuHkti+uMHfZZvQ',
+    },
+    {
+        validFrom: '2025-04-14T00:00:00.000Z',
+        signature:
+            'MToxNzQ0NTg4ODAwOozOB9ICjA1ElWSMG72x+ALP0VNfmNGOU9YofeIwjSoh',
+    },
+    {
+        validFrom: '2025-04-21T00:00:00.000Z',
+        signature:
+            'MToxNzQ1MTkzNjAwOgUzl48V5Rh8L10OxFY3rPAYn3ado3ZHKwnzq5j7j6Vn',
+    },
+    {
+        validFrom: '2025-04-28T00:00:00.000Z',
+        signature:
+            'MToxNzQ1Nzk4NDAwOgiXI+ca+ztyR/e5fKP+pa+WfWaf1sGk2DPQNzjG70Lw',
+    },
+    {
+        validFrom: '2025-05-05T00:00:00.000Z',
+        signature:
+            'MToxNzQ2NDAzMjAwOsfe4wR2zkBkdrFwJMgTyPQ9RQMgfBglMplrjYvCn2Dq',
+    },
+    {
+        validFrom: '2025-05-12T00:00:00.000Z',
+        signature:
+            'MToxNzQ3MDA4MDAwOhlrl5qxZghLKTSVehw0G+98rgVn6mXSsb9mP/bErUTA',
+    },
+    {
+        validFrom: '2025-05-19T00:00:00.000Z',
+        signature:
+            'MToxNzQ3NjEyODAwOplmaPeioRi956FAq2tGcQXnKX1K5LaUpuNTBrIWyMnX',
+    },
+    {
+        validFrom: '2025-05-26T00:00:00.000Z',
+        signature:
+            'MToxNzQ4MjE3NjAwOmOXIqxJsdsRvWce0ovEVjGzQ3LuB8fPzH/ujS1WWkU2',
+    },
+    {
+        validFrom: '2025-06-02T00:00:00.000Z',
+        signature:
+            'MToxNzQ4ODIyNDAwOmqhDtMJ8Kx4ZSjMJIWv6jgarOGOpW8PRB/O8lwmOjB7',
+    },
+    {
+        validFrom: '2025-06-09T00:00:00.000Z',
+        signature:
+            'MToxNzQ5NDI3MjAwOnWoHuVPIbNH8XrBE6qw/9U7erKRO7pWZosF55tuEe4/',
+    },
+    {
+        validFrom: '2025-06-16T00:00:00.000Z',
+        signature:
+            'MToxNzUwMDMyMDAwOgoM+zl0tXlGcI3Ya7EZsX7PbHjZ2sr64jz8Q21Ls40R',
+    },
+    {
+        validFrom: '2025-06-23T00:00:00.000Z',
+        signature:
+            'MToxNzUwNjM2ODAwOnOPWPVLhSaoescBFYCGf5/b372tggskaJ+qK2eYe8e3',
+    },
+    {
+        validFrom: '2025-06-30T00:00:00.000Z',
+        signature:
+            'MToxNzUxMjQxNjAwOkzljpcr1D0AeKdF7/EqdQQZ6qFauMdveQMEfWMg4E93',
+    },
+    {
+        validFrom: '2025-07-07T00:00:00.000Z',
+        signature:
+            'MToxNzUxODQ2NDAwOqE0GdyJwt7UD1tl8jJeHy5E5t42189uhllEodlNUngq',
+    },
+    {
+        validFrom: '2025-07-14T00:00:00.000Z',
+        signature:
+            'MToxNzUyNDUxMjAwOklZ+lyZkQMWRxrie3ibCxGDAJbnud9hLch26pe5GQv0',
+    },
+    {
+        validFrom: '2025-07-21T00:00:00.000Z',
+        signature:
+            'MToxNzUzMDU2MDAwOkWKceQjw4yG88sF/5Cxywa70ZZ3ojnSspv/TfJcuPNW',
+    },
+    {
+        validFrom: '2025-07-28T00:00:00.000Z',
+        signature:
+            'MToxNzUzNjYwODAwOgss/yXR22Jzk1LlV2vje8oCngX1erirflnUoNoZM4YG',
+    },
+    {
+        validFrom: '2025-08-04T00:00:00.000Z',
+        signature:
+            'MToxNzU0MjY1NjAwOhTURXfWm2G7sQ4WovG3yC5rFc6kt2hMpMBtLuHUQjXs',
+    },
+    {
+        validFrom: '2025-08-11T00:00:00.000Z',
+        signature:
+            'MToxNzU0ODcwNDAwOh+ljCucYWHEbDVTMLpJO8eOg4xrb3NvrPsD9F8oDLvJ',
+    },
+    {
+        validFrom: '2025-08-18T00:00:00.000Z',
+        signature:
+            'MToxNzU1NDc1MjAwOqOHlcO9cUVm/ErL+U/6PfgBm9XHtNnlh8lUwB3UX6oT',
+    },
+    {
+        validFrom: '2025-08-25T00:00:00.000Z',
+        signature:
+            'MToxNzU2MDgwMDAwOgHn23eq8yhyidj5xcsM4HV3LShqj5e+BRWmchi2BDiJ',
+    },
+    {
+        validFrom: '2025-09-01T00:00:00.000Z',
+        signature:
+            'MToxNzU2Njg0ODAwOsBkU9Q73HBQ1DmpKUbLk6wSaK7wrMxV1cEKqMktpi77',
+    },
+    {
+        validFrom: '2025-09-08T00:00:00.000Z',
+        signature:
+            'MToxNzU3Mjg5NjAwOpNbh96mbzonsgqcU76UWF35Ipojvw6NclHNAW3ifBCw',
+    },
+    {
+        validFrom: '2025-09-15T00:00:00.000Z',
+        signature:
+            'MToxNzU3ODk0NDAwOnBdqdQKmZXP3KN0MnoJabKxFIIGNRNAla2muJRs+w0X',
+    },
+    {
+        validFrom: '2025-09-22T00:00:00.000Z',
+        signature:
+            'MToxNzU4NDk5MjAwOlqWxWwaBv4RyZImDDqqNcuCxUddlSh9plDLH39er+l7',
+    },
+    {
+        validFrom: '2025-09-29T00:00:00.000Z',
+        signature:
+            'MToxNzU5MTA0MDAwOjEnn1o/gTxZM2/Gigdg7uqKG2bWqA9P7OokMdB9ffq8',
+    },
+    {
+        validFrom: '2025-10-06T00:00:00.000Z',
+        signature:
+            'MToxNzU5NzA4ODAwOqSCeTJJYqqDkpEVHeCxlDO9CRbFB3i7LA3Rw/BMqP4A',
+    },
+    {
+        validFrom: '2025-10-13T00:00:00.000Z',
+        signature:
+            'MToxNzYwMzEzNjAwOiQxgwlDy1Yp49HlinlSBVM90fI5uoAtAqimunSSpU5R',
+    },
+    {
+        validFrom: '2025-10-20T00:00:00.000Z',
+        signature:
+            'MToxNzYwOTE4NDAwOmtW9+HoTZKhS+V4cHIto78AzxNSu6WDQMCajfAXW0xJ',
+    },
+    {
+        validFrom: '2025-10-27T00:00:00.000Z',
+        signature:
+            'MToxNzYxNTIzMjAwOtwEeh3ov08rl6J+ZdH/7XRdHqRvJ+aZxop5PjWWV4YY',
+    },
+    {
+        validFrom: '2025-11-03T00:00:00.000Z',
+        signature:
+            'MToxNzYyMTI4MDAwOtBu+5g4lL1zEpmaNkgqFl2VEOnaF9ZzzAYIM79Q1bIk',
+    },
+    {
+        validFrom: '2025-11-10T00:00:00.000Z',
+        signature:
+            'MToxNzYyNzMyODAwOih7amyEfH5Xm/X6zo/a+L3JpqjC10JYWYYV9H6z37DO',
+    },
+    {
+        validFrom: '2025-11-17T00:00:00.000Z',
+        signature:
+            'MToxNzYzMzM3NjAwOi9KWyqIxT2GVV2Mup4t/RkKiUSsk+u43uMCpyfCs8Hq',
+    },
+    {
+        validFrom: '2025-11-24T00:00:00.000Z',
+        signature:
+            'MToxNzYzOTQyNDAwOv5O/VoUmEdY/fCj4b4I1K3li+U9yjmJEk6mTuPuTWiV',
+    },
+    {
+        validFrom: '2025-12-01T00:00:00.000Z',
+        signature:
+            'MToxNzY0NTQ3MjAwOsvJ7klr4NXvITa94QErDLiPbQvGD3iW5BLPpKfOQUSx',
+    },
+    {
+        validFrom: '2025-12-08T00:00:00.000Z',
+        signature:
+            'MToxNzY1MTUyMDAwOgZFRJyf/xXO5W6xQNQaiGWkTG2qmYbwxD7Wco+8VJ9o',
+    },
+    {
+        validFrom: '2025-12-15T00:00:00.000Z',
+        signature:
+            'MToxNzY1NzU2ODAwOpk25CXSscE/FoiTZVfE73bhgiWiYMrp/ulu2z+vkj7E',
+    },
+    {
+        validFrom: '2025-12-22T00:00:00.000Z',
+        signature:
+            'MToxNzY2MzYxNjAwOkPtwZYz/s6jlUIdNKRekTePSuXCIaBg42BcSvCVln3s',
+    },
+    {
+        validFrom: '2025-12-29T00:00:00.000Z',
+        signature:
+            'MToxNzY2OTY2NDAwOgTLygFlC7WfnK8hMxLfHj188vf8tCRLssxgO8J4thE0',
+    },
+    {
+        validFrom: '2026-01-05T00:00:00.000Z',
+        signature:
+            'MToxNzY3NTcxMjAwOhxqD2iWU62IIwTHCcJX6fhceWzg2CudiiCCtI20aE7r',
+    },
+    {
+        validFrom: '2026-01-12T00:00:00.000Z',
+        signature:
+            'MToxNzY4MTc2MDAwOqtXNjbJKAOwC8FRA3eIOvJH6lMrsErPnewRghdTmjbo',
+    },
+    {
+        validFrom: '2026-01-19T00:00:00.000Z',
+        signature:
+            'MToxNzY4NzgwODAwOi/+yU2syb2UhkQL7mQVJ5QCajbryDn7ucry7enS4N7d',
+    },
+    {
+        validFrom: '2026-01-26T00:00:00.000Z',
+        signature:
+            'MToxNzY5Mzg1NjAwOpCN8gy2DlmvWGarcfZrre/gO37r7FCPK0H4k9iZvDUv',
+    },
+    {
+        validFrom: '2026-02-02T00:00:00.000Z',
+        signature:
+            'MToxNzY5OTkwNDAwOgydKQRHNcWCYyVxntHMpF381pyQissqas7SYlfTEJcr',
+    },
+    {
+        validFrom: '2026-02-09T00:00:00.000Z',
+        signature:
+            'MToxNzcwNTk1MjAwOvbw7PAOdUhYdPNqqu2EAXoPllQRCG0ih1XZ4XbvHU6U',
+    },
+    {
+        validFrom: '2026-02-16T00:00:00.000Z',
+        signature:
+            'MToxNzcxMjAwMDAwOqbMcnIQuRlO+dg/MpkBY1Bfg4zUQvDsJbPNPdo1z0S3',
+    },
+    {
+        validFrom: '2026-02-23T00:00:00.000Z',
+        signature:
+            'MToxNzcxODA0ODAwOlRoWudg2glPrPW4x0wZ56Cg/voLoW+JPUpfVHH5zaGR',
+    },
+    {
+        validFrom: '2026-03-02T00:00:00.000Z',
+        signature:
+            'MToxNzcyNDA5NjAwOmAVRj6ZLALdIxifNpiRz/KYEwMk7QasS+cuj9a2bQ6y',
+    },
+    {
+        validFrom: '2026-03-09T00:00:00.000Z',
+        signature:
+            'MToxNzczMDE0NDAwOgqzcqkCJ2pOd2i457AJy+l23Af2wR4E7ykCUPUgAfNg',
+    },
+    {
+        validFrom: '2026-03-16T00:00:00.000Z',
+        signature:
+            'MToxNzczNjE5MjAwOkQBUHj5Z83/G2jUVgcIPhw2f7GbwsjVhb+UCeFnVNGm',
+    },
+    {
+        validFrom: '2026-03-23T00:00:00.000Z',
+        signature:
+            'MToxNzc0MjI0MDAwOkda8DoNz+/w/tCQ/Vr2rb4iuLe+4HxsuJlL5LeP+fAe',
+    },
+    {
+        validFrom: '2026-03-30T00:00:00.000Z',
+        signature:
+            'MToxNzc0ODI4ODAwOkoWLIuJMJ8vw2yMHKY7iNgcK/+kWJbCypYVARahI5CP',
+    },
+    {
+        validFrom: '2026-04-06T00:00:00.000Z',
+        signature:
+            'MToxNzc1NDMzNjAwOk7lRsEu/EFZ3/monwomFw8TvXdBOkfV1rERzJMFHwMU',
+    },
+    {
+        validFrom: '2026-04-13T00:00:00.000Z',
+        signature:
+            'MToxNzc2MDM4NDAwOhhuuXaavI2nb7keZqCcLt7W5sYWKOFG6NDg6RSqOBkE',
+    },
+    {
+        validFrom: '2026-04-20T00:00:00.000Z',
+        signature:
+            'MToxNzc2NjQzMjAwOoGE2Z/oyjNpuDQslKNMyFRTV8PJz4VRP28HT46+uygv',
+    },
+    {
+        validFrom: '2026-04-27T00:00:00.000Z',
+        signature:
+            'MToxNzc3MjQ4MDAwOm91z9X943kyJ/G8kl6kdJ8jDmoc6ALR38q4ASdet/SX',
+    },
+    {
+        validFrom: '2026-05-04T00:00:00.000Z',
+        signature:
+            'MToxNzc3ODUyODAwOkJQE+2lS/Egixmo4UbiNahQ6wJ2fbklgh89xAGqv6GO',
+    },
+    {
+        validFrom: '2026-05-11T00:00:00.000Z',
+        signature:
+            'MToxNzc4NDU3NjAwOqa5j0MERCVnbLgDbT53Gq+/ynGvCf5icPu3Dv/djLTj',
+    },
+    {
+        validFrom: '2026-05-18T00:00:00.000Z',
+        signature:
+            'MToxNzc5MDYyNDAwOkFnkkqu0PJ17Aw5ol4QXdxyQcMpOLwZpgshwINfJyaH',
+    },
+    {
+        validFrom: '2026-05-25T00:00:00.000Z',
+        signature:
+            'MToxNzc5NjY3MjAwOgq3tyIViGmnnVNx4kcTxC/Rr6PGvRGhdLX2YTZTi3ns',
+    },
+    {
+        validFrom: '2026-06-01T00:00:00.000Z',
+        signature:
+            'MToxNzgwMjcyMDAwOpJcg+0Zfj5hxttpy7/FWAyyIg5PAlS9z8/eXv/YdyMn',
+    },
+    {
+        validFrom: '2026-06-08T00:00:00.000Z',
+        signature:
+            'MToxNzgwODc2ODAwOsxcyTIpMSzK00BV8kaHXb4oOENaww3lwrwwWJ411GyH',
+    },
+    {
+        validFrom: '2026-06-15T00:00:00.000Z',
+        signature:
+            'MToxNzgxNDgxNjAwOi9+5D0Yx2RC25+vuL3KZhTlNKriL0g6uhz1b3p4R5uE',
+    },
+    {
+        validFrom: '2026-06-22T00:00:00.000Z',
+        signature:
+            'MToxNzgyMDg2NDAwOosxPpO0ZuWKrDZVIHxZediOY3WqTrWJSUNtE/eAYmK9',
+    },
+    {
+        validFrom: '2026-06-29T00:00:00.000Z',
+        signature:
+            'MToxNzgyNjkxMjAwOvzNd75LaoAyrhzZbcNFJ4iNpv/q8Ymtn39t9/VHEhzS',
+    },
+    {
+        validFrom: '2026-07-06T00:00:00.000Z',
+        signature:
+            'MToxNzgzMjk2MDAwOo8fY7EGo6QYRcT4yQm/J91Bl6OH6BUEI22rUBH/gerh',
+    },
+    {
+        validFrom: '2026-07-13T00:00:00.000Z',
+        signature:
+            'MToxNzgzOTAwODAwOiae198Y1hGgOTwCivxS+0wA1lWyRR6ygUmPHUl4EQ1q',
+    },
+    {
+        validFrom: '2026-07-20T00:00:00.000Z',
+        signature:
+            'MToxNzg0NTA1NjAwOtO+JNX4Q7rq2MDg13mOBy02usMvL5dE9glRHppEi5Bm',
+    },
 ];
 export default function getHeaders() {
     const now = new Date().toISOString();
-    const { signature } = data.findLast(({ validFrom }) => validFrom <= now)!;
+    const header = data.findLast(({ validFrom }) => validFrom <= now);
+    if (!header) {
+        throw new Error('No valid header found for current date');
+    }
     return {
-        "bereal-timezone": "Europe/Paris",
-        "bereal-device-id": "820B5AA5-0FDE-4199-93C8-64B12D08D5EF",
-        "bereal-signature": signature,
+        'bereal-timezone': 'Europe/Paris',
+        'bereal-device-id': '820B5AA5-0FDE-4199-93C8-64B12D08D5EF',
+        'bereal-signature': header.signature,
     };
 }
 
 declare global {
     interface Array<T> {
-        findLast(predicate: (value: T, index: number, array: T[]) => boolean): T | undefined;
+        findLast(
+            predicate: (value: T, index: number, array: T[]) => boolean,
+        ): T | undefined;
     }
 }
 
-Array.prototype.findLast = function (predicate: (value: any, index: number, array: any[]) => boolean) {
+Array.prototype.findLast = function (
+    predicate: (value: any, index: number, array: any[]) => boolean,
+) {
     for (let i = this.length - 1; i >= 0; i--) {
         if (predicate(this[i], i, this)) {
             return this[i];

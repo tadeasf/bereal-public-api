@@ -34,7 +34,7 @@ export class Post {
         url: string,
         head: any,
         photo: Uint8Array,
-        resize: boolean = false,
+        resize = false,
     ): Promise<BeFakeResponse> {
         try {
             const postToUpload: PostUploadBySteps = new PostUploadBySteps();
@@ -58,18 +58,18 @@ export class Post {
     }
 
     public async postPhoto(
-        late: boolean = true,
-        visibility: string = 'friends',
-        retakes: number = 0,
+        late = true,
+        visibility = 'friends',
+        retakes = 0,
         primary_size: [number, number],
         secondary_size: [number, number],
         primaryPath: string,
         secondaryPath: string,
         taken_at: string = moment().format('YYYY-MM-DDTHH:mm:ss.SSS[Z]'),
-        caption?: string, // caption is optional
+        caption?: string,
         location?: [number, number],
     ): Promise<BeFakeResponse> {
-        let json_data: any = {
+        const json_data = {
             isLate: late,
             retakeCounter: retakes,
             takenAt: taken_at,
@@ -125,10 +125,10 @@ export class Post {
         primary: Uint8Array,
         secondary: Uint8Array,
         late: boolean,
-        visibility: string = 'friends',
-        resize: boolean = true,
-        retakes: number = 0,
-        caption?: string, // caption is optional
+        visibility = 'friends',
+        resize = true,
+        retakes = 0,
+        caption?: string,
         taken_at?: string,
         location?: [number, number],
     ): Promise<BeFakeResponse> {
@@ -153,7 +153,7 @@ export class Post {
                 msg: 'Error while uploading photos postUpload.upload()',
             };
         }
-        let json_data: any = {
+        const json_data = {
             isLate: late,
             retakeCounter: retakes,
             takenAt: taken_at,

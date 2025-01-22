@@ -4,7 +4,6 @@ import * as moment from 'moment';
 import { Post } from './modules/Post';
 import { BeFakeResponse } from './types/BeFakeResponse';
 import { tokenObj } from 'src/types/types';
-import { sendMail } from 'src/Resend/sendMail';
 import getHeaders from './headers';
 
 export default class BeFake {
@@ -39,7 +38,8 @@ export default class BeFake {
                 'x-ios-bundle-identifier': 'AlexisBarreyat.BeReal',
             });
         this.dataPath = 'programData';
-        this.sign = 'MToxNzEzNzEyODgwOjxnCJdewCldXQkgQ/eI0ju6j+S5qUeVZ7GaepOzma2O';
+        this.sign =
+            'MToxNzEzNzEyODgwOjxnCJdewCldXQkgQ/eI0ju6j+S5qUeVZ7GaepOzma2O';
     }
 
     // Generate a random device id, (random string with 16chars)
@@ -55,58 +55,59 @@ export default class BeFake {
     }
 
     async sendOtpCloud(phoneNumber: string): Promise<BeFakeResponse> {
-
         try {
             const firstData = {
-                "appToken":
+                appToken:
                     '54F80A258C35A916B38A3AD83CA5DDD48A44BFE2461F90831E0F97EBA4BB2EC7',
             };
             const firstUrl =
                 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyClient?key=' +
                 this.google_api_key;
             const headers = {
-                "content-type": "application/json",
-                "accept": "*/*",
-                "x-client-version": "iOS/FirebaseSDK/9.6.0/FirebaseCore-iOS",
-                "x-ios-bundle-identifier": "AlexisBarreyat.BeReal",
-                "accept-language": "en",
-                "user-agent": "FirebaseAuth.iOS/9.6.0 AlexisBarreyat.BeReal/0.31.0 iPhone/14.7.1 hw/iPhone9_1",
-                "x-firebase-locale": "en",
-                "x-firebase-gmpid": "1:405768487586:ios:28c4df089ca92b89",
-                "bereal-app-version-code": "14549",
-                ...getHeaders()
-            }
+                'content-type': 'application/json',
+                accept: '*/*',
+                'x-client-version': 'iOS/FirebaseSDK/9.6.0/FirebaseCore-iOS',
+                'x-ios-bundle-identifier': 'AlexisBarreyat.BeReal',
+                'accept-language': 'en',
+                'user-agent':
+                    'FirebaseAuth.iOS/9.6.0 AlexisBarreyat.BeReal/0.31.0 iPhone/14.7.1 hw/iPhone9_1',
+                'x-firebase-locale': 'en',
+                'x-firebase-gmpid': '1:405768487586:ios:28c4df089ca92b89',
+                'bereal-app-version-code': '14549',
+                ...getHeaders(),
+            };
 
             const firstResponse = await axios.post(firstUrl, firstData, {
-                headers, validateStatus: function (status) {
-                    return true
+                headers,
+                validateStatus: function () {
+                    return true;
                 },
-            })
-            const rec = firstResponse.data.receipt
+            });
+            const rec = firstResponse.data.receipt;
             const secondUrl =
                 'https://www.googleapis.com/identitytoolkit/v3/relyingparty/sendVerificationCode?key=' +
                 this.google_api_key;
             const secondData = {
-                "phoneNumber": phoneNumber,
-                "iosReceipt": rec,
-            }
+                phoneNumber: phoneNumber,
+                iosReceipt: rec,
+            };
             const secondResponse = await axios.post(secondUrl, secondData, {
-                headers, validateStatus: function (status) {
-                    return true
+                headers,
+                validateStatus: function () {
+                    return true;
                 },
-            })
+            });
             return {
                 done: true,
                 msg: 'OTP code sent',
                 data: { otpSession: secondResponse.data },
             };
-
         } catch (error) {
             return {
                 done: false,
-                msg: "Something went wrong when loggin",
-                "data": error
-            }
+                msg: 'Something went wrong when loggin',
+                data: error,
+            };
         }
     }
 
@@ -116,7 +117,7 @@ export default class BeFake {
                 'content-type': 'application/json',
                 'x-firebase-client':
                     'apple-platform/ios apple-sdk/19F64 appstore/true deploy/cocoapods device/iPhone9,1 fire-abt/8.15.0 fire-analytics/8.15.0 fire-auth/8.15.0 fire-db/8.15.0 fire-dl/8.15.0 fire-fcm/8.15.0 fire-fiam/8.15.0 fire-fst/8.15.0 fire-fun/8.15.0 fire-install/8.15.0 fire-ios/8.15.0 fire-perf/8.15.0 fire-rc/8.15.0 fire-str/8.15.0 firebase-crashlytics/8.15.0 os-version/14.7.1 xcode/13F100',
-                'accept': '*/*',
+                accept: '*/*',
                 'x-client-version': 'iOS/FirebaseSDK/8.15.0/FirebaseCore-iOS',
                 'x-firebase-client-log-type': '0',
                 'x-ios-bundle-identifier': 'AlexisBarreyat.BeReal',
@@ -178,10 +179,11 @@ export default class BeFake {
             JSON.stringify(data),
             {
                 headers: {
-                    "Accept": "*/*",
-                    "User-Agent": "BeReal/8586 CFNetwork/1240.0.4 Darwin/20.6.0",
-                    "x-ios-bundle-identifier": "AlexisBarreyat.BeReal",
-                    "Content-Type": "application/json"
+                    Accept: '*/*',
+                    'User-Agent':
+                        'BeReal/8586 CFNetwork/1240.0.4 Darwin/20.6.0',
+                    'x-ios-bundle-identifier': 'AlexisBarreyat.BeReal',
+                    'Content-Type': 'application/json',
                 },
             },
         );
@@ -223,21 +225,27 @@ export default class BeFake {
     async refreshTokens(): Promise<BeFakeResponse> {
         try {
             await this.firebaseRefreshTokens();
-            const response = await axios.post(
+            const { data } = await axios.post(
                 'https://auth.bereal.team/token?grant_type=firebase',
                 {
-                    "grant_type": "firebase",
-                    "client_id": "ios",
-                    "client_secret": "962D357B-B134-4AB6-8F53-BEA2B7255420",
-                    "token": this.firebaseToken
+                    grant_type: 'firebase',
+                    client_id: 'ios',
+                    client_secret: '962D357B-B134-4AB6-8F53-BEA2B7255420',
+                    token: this.firebaseToken,
                 },
                 {
-                    headers: { "Accept": "application/json", "User-Agent": "BeReal/8586 CFNetwork/1240.0.4 Darwin/20.6.0", "x-ios-bundle-identifier": "AlexisBarreyat.BeReal", "Content-Type": "application/json" }
+                    headers: {
+                        Accept: 'application/json',
+                        'User-Agent':
+                            'BeReal/8586 CFNetwork/1240.0.4 Darwin/20.6.0',
+                        'x-ios-bundle-identifier': 'AlexisBarreyat.BeReal',
+                        'Content-Type': 'application/json',
+                    },
                 },
             );
-            this.token = response.data.access_token;
-            this.expiration = moment().add(response.data.expires_in, 'seconds');
-            this.refresh_token = response.data.refresh_token;
+            this.token = data.access_token;
+            this.expiration = moment().add(data.expires_in, 'seconds');
+            this.refresh_token = data.refresh_token;
             const dataToReturn: tokenObj = {
                 access: {
                     refresh_token: this.refresh_token,
@@ -255,7 +263,7 @@ export default class BeFake {
                 done: true,
                 msg: 'Token refreshed successfully',
                 data: {
-                    response: response.data,
+                    response: data,
                     mainData: dataToReturn,
                 },
             };
@@ -302,11 +310,11 @@ export default class BeFake {
         otpSesion: string,
     ): Promise<BeFakeResponse> {
         const headers = {
-            "Accept": "application/json",
-            "User-Agent": "BeReal/8586 CFNetwork/1240.0.4 Darwin/20.6.0",
-            "x-ios-bundle-identifier": "AlexisBarreyat.BeReal",
-            "Content-Type": "application/json"
-        }
+            Accept: 'application/json',
+            'User-Agent': 'BeReal/8586 CFNetwork/1240.0.4 Darwin/20.6.0',
+            'x-ios-bundle-identifier': 'AlexisBarreyat.BeReal',
+            'Content-Type': 'application/json',
+        };
 
         const otpVerRes = await axios.post(
             'https://auth.bereal.team/api/vonage/check-code',
@@ -315,8 +323,8 @@ export default class BeFake {
                 code: otpCode,
             }),
             {
-                headers: headers
-            }
+                headers: headers,
+            },
         );
 
         // TODO: check if the response is 200 or 201
@@ -461,8 +469,8 @@ export default class BeFake {
             url: this.api_url + '/' + endpoint,
             headers: {
                 Authorization: 'Bearer ' + this.token,
-                "bereal-app-version-code": "14549",
-                ...getHeaders()
+                'bereal-app-version-code': '14549',
+                ...getHeaders(),
             },
             data: data,
             params: params,
@@ -831,6 +839,62 @@ export default class BeFake {
             return {
                 done: false,
                 msg: 'Error getting memories feed',
+                data: error,
+            };
+        }
+    }
+
+    public async refreshToken(): Promise<BeFakeResponse> {
+        try {
+            const { data } = await axios.post(
+                'https://auth.bereal.team/api/refresh-token',
+                {
+                    grant_type: 'refresh_token',
+                    client_id: 'ios',
+                    client_secret: '962D357B-B134-4AB6-8F53-BEA2B7255420',
+                    refresh_token: this.refresh_token,
+                },
+            );
+
+            this.token = data.access_token;
+            this.expiration = moment().add(data.expires_in, 'seconds');
+            this.refresh_token = data.refresh_token;
+
+            return {
+                done: true,
+                msg: 'Token refreshed successfully',
+                data: data,
+            };
+        } catch (error) {
+            return {
+                done: false,
+                msg: 'Failed to refresh token',
+                data: error,
+            };
+        }
+    }
+
+    public async verifyCode(code: string): Promise<BeFakeResponse> {
+        try {
+            const { data } = await axios.post(
+                'https://auth.bereal.team/api/verify-code',
+                {
+                    code: code,
+                },
+                {
+                    headers: this.headers,
+                },
+            );
+
+            return {
+                done: true,
+                msg: 'Code verified successfully',
+                data: data,
+            };
+        } catch (error) {
+            return {
+                done: false,
+                msg: 'Failed to verify code',
                 data: error,
             };
         }

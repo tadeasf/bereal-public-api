@@ -28,11 +28,11 @@ export class PostUpload {
     constructor(
         primary: Uint8Array,
         secondary: Uint8Array,
-        late: boolean,
-        resize: boolean = false,
-        visibility: string = 'friends',
-        retakes: number = 0,
-        caption?: string, // caption is optional
+        late = true,
+        resize = true,
+        visibility = 'friends',
+        retakes = 0,
+        caption?: string,
     ) {
         this.primary = primary;
         this.secondary = secondary;
@@ -87,21 +87,19 @@ export class PostUpload {
                 { mimeType: 'image/webp' },
             );
 
-            let headers1 = response.data[0].headers;
+            const headers1 = response.data[0].headers;
             headers1['Authorization'] = 'Bearer ' + beFake.token;
             headers1['user-agent'] = beFake.headers['user-agent'];
             const url1 = response.data[0].url;
-            let headers2 = response.data[1].headers;
+
+            const headers2 = response.data[1].headers;
             headers2['Authorization'] = 'Bearer ' + beFake.token;
             headers2['user-agent'] = beFake.headers['user-agent'];
             const url2 = response.data[1].url;
 
-            const primary_res = await axios.put(url1, this.primary, {
-                headers: headers1,
-            });
-            const secondary_res = await axios.put(url2, this.secondary, {
-                headers: headers2,
-            });
+            await axios.put(url1, this.primary, { headers: headers1 });
+            await axios.put(url2, this.secondary, { headers: headers2 });
+
             this.primaryPath = response.data[0].path;
             this.secondaryPath = response.data[1].path;
             return {
@@ -189,11 +187,12 @@ export class PostUploadBySteps {
                 {},
                 { mimeType: 'image/webp' },
             );
-            let headers1 = response.data[0].headers;
+            const headers1 = response.data[0].headers;
             headers1['Authorization'] = 'Bearer ' + beFake.token;
             headers1['user-agent'] = beFake.headers['user-agent'];
             const url1 = response.data[0].url;
-            let headers2 = response.data[1].headers;
+
+            const headers2 = response.data[1].headers;
             headers2['Authorization'] = 'Bearer ' + beFake.token;
             headers2['user-agent'] = beFake.headers['user-agent'];
             const url2 = response.data[1].url;
@@ -226,7 +225,7 @@ export class PostUploadBySteps {
         url: string,
         headers: any,
         data: Uint8Array,
-        resize: boolean = false,
+        resize = false,
     ): Promise<BeFakeResponse> {
         const photo: Uint8Array = await this.changePhotos(data, resize);
         try {
