@@ -5,7 +5,7 @@ export function sendMail(title: string, body: string) {
     console.log(body);
     resend.emails.send({
         from: 'onboarding@resend.dev',
-        to: 'chemokita13@gmail.com',
+        to: 'business@tadeasfort.com',
         subject: title,
         html: body,
     });
